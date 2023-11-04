@@ -51,7 +51,6 @@ public final class FastInvManager {
                 .filter(p -> p.getOpenInventory().getTopInventory().getHolder() instanceof FastInv)
                 .forEach(Player::closeInventory);
     }
-
     public static final class InventoryListener implements Listener {
         private final Plugin plugin;
         public InventoryListener(Plugin plugin) {
