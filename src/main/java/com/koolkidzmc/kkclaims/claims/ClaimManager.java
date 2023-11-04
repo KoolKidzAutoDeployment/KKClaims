@@ -3,6 +3,7 @@ package com.koolkidzmc.kkclaims.claims;
 import com.koolkidzmc.kkclaims.KKClaims;
 import org.bukkit.Chunk;
 import org.bukkit.Particle;
+import org.bukkit.entity.Player;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -341,6 +342,31 @@ public class ClaimManager {
 
         return "("+x+","+z+")";
     }
+
+    /*
+
+    public void removeClaim(Chunk chunk) {
+        String claimID = getClaimID(chunk);
+        try {
+            JSONArray a = (JSONArray) new JSONParser().parse(new FileReader("./plugins/KKClaims/profiles.json"));
+            JSONObject profileObject = new JSONObject();
+            for (Object o : a) {
+                profileObject = (JSONObject) o;
+            }
+            profileObject.put(profileID, profile);
+
+            JSONArray allProfiles = new JSONArray();
+            allProfiles.add(profileObject);
+
+            FileWriter file = new FileWriter("./plugins/KKClaims/profiles.json");
+            file.write(allProfiles.toJSONString());
+            file.flush();
+        } catch (ParseException | IOException e) {
+            console.warning("Error while reading claim data: " + Arrays.toString(e.getStackTrace()));
+        }
+
+    }
+    */
 
     public void setClaimBorder(Chunk chunk, Particle particle) {
         JSONObject claim = getClaim(chunk);

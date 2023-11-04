@@ -2,7 +2,7 @@ package com.koolkidzmc.kkclaims;
 
 import com.koolkidzmc.kkclaims.claims.ClaimManager;
 import com.koolkidzmc.kkclaims.commands.CommandClaim;
-import com.koolkidzmc.kkclaims.commands.CommandForceClaim;
+import com.koolkidzmc.kkclaims.commands.CommandUnClaim;
 import com.koolkidzmc.kkclaims.commands.CommandParticle;
 import com.koolkidzmc.kkclaims.listeners.JoinListener;
 import com.koolkidzmc.kkclaims.listeners.PreventionListener;
@@ -68,7 +68,7 @@ public final class KKClaims extends JavaPlugin {
     }
 
     public void loadCommands() {
-        this.getCommand("forceclaim").setExecutor(new CommandForceClaim(this, claims));
+        this.getCommand("forceclaim").setExecutor(new CommandUnClaim(this, claims));
         this.getCommand("particle").setExecutor(new CommandParticle(this, claims));
         this.getCommand("claim").setExecutor(new CommandClaim(this, claims));
     }

@@ -7,11 +7,11 @@ import org.bukkit.Chunk;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 
-public class CommandForceClaim implements CommandExecutor {
+public class CommandUnClaim implements CommandExecutor {
 
     KKClaims plugin;
     ClaimManager claims;
-    public CommandForceClaim(KKClaims plugin, ClaimManager claims) {
+    public CommandUnClaim(KKClaims plugin, ClaimManager claims) {
         this.plugin = plugin;
         this.claims = claims;
     }
@@ -20,10 +20,12 @@ public class CommandForceClaim implements CommandExecutor {
         if (sender instanceof Player player) {
             Chunk chunk = player.getLocation().getChunk();
 
-            if (claims.isClaimed(chunk)) {
-                player.sendMessage("This chunk is already claimed");
+            if (!claims.getClaimOwner(chunk).equals(player.getUniqueId())) {
+                player.sendMessage("This chunk is not your claim!");
             } else {
-                claims.createClaim(chunk, player.getUniqueId());
+                /*
+                claims.removeClaim(chunk);
+                */
             }
         } else if (sender instanceof ConsoleCommandSender console) {
             console.sendMessage("This command must be run by a player!");
