@@ -71,6 +71,7 @@ public final class KKClaims extends JavaPlugin {
         this.getCommand("forceclaim").setExecutor(new CommandUnClaim(this, claims));
         this.getCommand("particle").setExecutor(new CommandParticle(this, claims));
         this.getCommand("claim").setExecutor(new CommandClaim(this, claims));
+        this.getCommand("claim").setExecutor(new CommandUnClaim(this, claims));
     }
 
     Runnable chunkBorders = () -> {
