@@ -44,7 +44,6 @@ public class CommandParticle implements CommandExecutor, TabCompleter {
         for (Particle particle : Particle.values()) {
             commands.add(particle.toString());
         }
-
         StringUtil.copyPartialMatches(args[0], commands, completions);
         Collections.sort(completions);
         return completions;
