@@ -343,30 +343,20 @@ public class ClaimManager {
         return "("+x+","+z+")";
     }
 
-    /*
-
     public void removeClaim(Chunk chunk) {
         String claimID = getClaimID(chunk);
         try {
-            JSONArray a = (JSONArray) new JSONParser().parse(new FileReader("./plugins/KKClaims/profiles.json"));
-            JSONObject profileObject = new JSONObject();
-            for (Object o : a) {
-                profileObject = (JSONObject) o;
-            }
-            profileObject.put(profileID, profile);
+            JSONArray a = (JSONArray) new JSONParser().parse(new FileReader("./plugins/KKClaims/claims.json"));
+            a.remove(claimID);
 
-            JSONArray allProfiles = new JSONArray();
-            allProfiles.add(profileObject);
-
-            FileWriter file = new FileWriter("./plugins/KKClaims/profiles.json");
-            file.write(allProfiles.toJSONString());
+            FileWriter file = new FileWriter("./plugins/KKClaims/claims.json");
+            file.write(a.toJSONString());
             file.flush();
         } catch (ParseException | IOException e) {
             console.warning("Error while reading claim data: " + Arrays.toString(e.getStackTrace()));
         }
 
     }
-    */
 
     public void setClaimBorder(Chunk chunk, Particle particle) {
         JSONObject claim = getClaim(chunk);

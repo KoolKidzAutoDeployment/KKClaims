@@ -23,15 +23,11 @@ public class CommandUnClaim implements CommandExecutor {
             if (!claims.getClaimOwner(chunk).equals(player.getUniqueId())) {
                 player.sendMessage("This chunk is not your claim!");
             } else {
-                /*
                 claims.removeClaim(chunk);
-                */
             }
         } else if (sender instanceof ConsoleCommandSender console) {
             console.sendMessage("This command must be run by a player!");
         }
         return true;
     }
-
-
 }
