@@ -53,13 +53,10 @@ public final class FastInvManager {
     }
 
     public static final class InventoryListener implements Listener {
-
         private final Plugin plugin;
-
         public InventoryListener(Plugin plugin) {
             this.plugin = plugin;
         }
-
         @EventHandler
         public void onInventoryClick(InventoryClickEvent e) {
             if (e.getInventory().getHolder() instanceof FastInv && e.getClickedInventory() != null) {
@@ -76,7 +73,6 @@ public final class FastInvManager {
                 }
             }
         }
-
         @EventHandler
         public void onInventoryOpen(InventoryOpenEvent e) {
             if (e.getInventory().getHolder() instanceof FastInv) {
@@ -85,7 +81,6 @@ public final class FastInvManager {
                 inv.handleOpen(e);
             }
         }
-
         @EventHandler
         public void onInventoryClose(InventoryCloseEvent e) {
             if (e.getInventory().getHolder() instanceof FastInv) {
@@ -96,7 +91,6 @@ public final class FastInvManager {
                 }
             }
         }
-
         @EventHandler
         public void onPluginDisable(PluginDisableEvent e) {
             if (e.getPlugin() == this.plugin) {
