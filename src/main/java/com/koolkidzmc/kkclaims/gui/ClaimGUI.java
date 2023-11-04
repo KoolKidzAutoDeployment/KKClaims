@@ -34,7 +34,15 @@ public class ClaimGUI extends FastInv {
             setItem(index, new ItemBuilder(getClaimedMat(chunk, player))
                     .name(ColorAPI.formatString(getClaimedName(chunk, player) + " &8" + claims.getChunkCoord(chunk)))
                     .addLore(ColorAPI.formatString(getClaimedStatus(chunk, player)))
-                    .build());
+                    .build(),
+            e -> {
+                if (claims.isClaimed(chunk)) {
+                    SoundAPI.fail(player);
+                } else {
+                    claims.createClaim(chunk, player.getUniqueId());
+                    SoundAPI.success(player);
+                }
+            });
             ++index;
         }
         setItem(22, new ItemBuilder(Material.NETHER_STAR).flags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS).enchant(Enchantment.DAMAGE_ALL)
