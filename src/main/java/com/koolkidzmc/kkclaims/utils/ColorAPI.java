@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 
 public class ColorAPI {
     public static String formatString(String str) {
-
         Pattern unicode = Pattern.compile("\\\\u\\+[a-fA-F0-9]{4}");
         Matcher match = unicode.matcher(str);
         while (match.find()) {
