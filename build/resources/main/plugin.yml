@@ -1,0 +1,42 @@
+name: KKClaims
+version: '0.1.0-BETA'
+main: com.koolkidzmc.kkclaims.KKClaims
+api-version: '1.18'
+prefix: KKClaims
+authors: [Preva1l, CodePunisher]
+description: KoolKidz Custom Claiming Plugin
+
+permissions:
+  kkclaims.*:
+    default: false
+    description: 'Gives player all permissions.'
+    children:
+      - kkclaims.claim
+  kkclaims.claim:
+    default: true
+    description: 'Allows player to claim land.'
+
+
+commands:
+  claim:
+    description: 'Claim Land'
+    usage: '/claim'
+    aliases:
+      - claim
+      - kkclaims
+    permission: kkclaims.claim
+    permission-message: '&cYou are not allowed to use that command!'
+  forceclaim:
+      description: 'Claim Land'
+      usage: '/forceclaim'
+      aliases:
+        - forceclaim
+      permission: kkclaims.claim
+      permission-message: '&cYou are not allowed to use that command!'
+  particle:
+    description: 'Change Claim Border'
+    usage: '/particle <particle>'
+    aliases:
+      - particle
+    permission: kkclaims.claim
+    permission-message: '&cYou are not allowed to use that command!'
