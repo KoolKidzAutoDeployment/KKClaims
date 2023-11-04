@@ -40,6 +40,7 @@ public class ClaimGUI extends FastInv {
                     SoundAPI.fail(player);
                 } else {
                     claims.createClaim(chunk, player.getUniqueId());
+                    new ClaimGUI(plugin, claims, player).open(player);
                     SoundAPI.success(player);
                 }
             });
