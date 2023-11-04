@@ -26,6 +26,14 @@ commands:
       - kkclaims
     permission: kkclaims.claim
     permission-message: '&cYou are not allowed to use that command!'
+  unclaim:
+    description: 'Remove a claim'
+    usage: '/unclaim'
+    aliases:
+      - unclaim
+      - removeclaim
+    permission: kkclaims.claim
+    permission-message: '&cYou are not allowed to use that command!'
   forceclaim:
       description: 'Claim Land'
       usage: '/forceclaim'
