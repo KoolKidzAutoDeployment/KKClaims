@@ -25,7 +25,6 @@ public class CommandClaim implements CommandExecutor, TabCompleter {
         this.plugin = plugin;
         this.claims = claims;
     }
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player player) {

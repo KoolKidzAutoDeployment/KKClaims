@@ -13,7 +13,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class CommandParticle implements CommandExecutor, TabCompleter {
-
     KKClaims plugin;
     ClaimManager claims;
     public CommandParticle(KKClaims plugin, ClaimManager claims) {
@@ -37,7 +36,6 @@ public class CommandParticle implements CommandExecutor, TabCompleter {
         }
         return true;
     }
-
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> completions = new ArrayList<>();

@@ -15,7 +15,6 @@ public class CommandForceClaim implements CommandExecutor {
         this.plugin = plugin;
         this.claims = claims;
     }
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player player) {
