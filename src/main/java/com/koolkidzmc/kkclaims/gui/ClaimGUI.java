@@ -33,12 +33,13 @@ public class ClaimGUI extends FastInv {
             if (index == 45) return;
             setItem(index, new ItemBuilder(getClaimedMat(chunk, player))
                     .name(ColorAPI.formatString(getClaimedName(chunk, player) + " &8" + claims.getChunkCoord(chunk)))
-                    .addLore("")
+                    .addLore(ColorAPI.formatString(getClaimedStatus(chunk, player)))
                     .build());
             ++index;
         }
         setItem(22, new ItemBuilder(Material.NETHER_STAR).flags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS).enchant(Enchantment.DAMAGE_ALL)
                 .name(ColorAPI.formatString(getClaimedName(player.getChunk(), player) + " &8" + claims.getChunkCoord(player.getChunk())))
+                .addLore(ColorAPI.formatString(getClaimedStatus(player.getChunk(), player)))
                 .build());
 
         setItem(49, new ItemBuilder(Material.BARRIER).flags(ItemFlag.HIDE_ATTRIBUTES)
@@ -107,9 +108,9 @@ public class ClaimGUI extends FastInv {
         return "&e" +  claims.getClaimOwner(chunk) + "'s Claim";
     }
     public String getClaimedStatus(Chunk chunk, Player player) {
-        if (!claims.isClaimed(chunk)) return "&7Available Claim";
-        if (claims.getClaimOwner(chunk).equals(player.getUniqueId())) return "&aYour Claim";
-        return "&e" +  claims.getClaimOwner(chunk) + "'s Claim";
+        if (!claims.isClaimed(chunk)) return "&f&l| &7Status: &fAvailable";
+        if (claims.getClaimOwner(chunk).equals(player.getUniqueId())) return "&f&l| &7Status: &aClaimed";
+        return "&f&l| &7Status: &aClaimed";
     }
     public ItemStack getClaimedMat(Chunk chunk, Player player) {
         if (!claims.isClaimed(chunk)) return new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
