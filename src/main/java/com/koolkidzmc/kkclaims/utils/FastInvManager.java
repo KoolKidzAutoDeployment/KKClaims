@@ -42,7 +42,6 @@ public final class FastInvManager {
 
         Bukkit.getPluginManager().registerEvents(new InventoryListener(plugin), plugin);
     }
-
     /**
      * Close all open FastInv inventories.
      */
