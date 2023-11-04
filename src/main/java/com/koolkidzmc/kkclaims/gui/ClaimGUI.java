@@ -59,7 +59,6 @@ public class ClaimGUI extends FastInv {
                 });
 
     }
-
     private List<Chunk> getNearByChunksRelativeToPlayerAndMenu(Player player) {
         List<Chunk> chunkList = new LinkedList<>();
         BlockFace facing = player.getFacing();
