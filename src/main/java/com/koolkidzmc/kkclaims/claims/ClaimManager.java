@@ -352,8 +352,9 @@ public class ClaimManager {
             for (Object  o : a) {
                 JSONObject oo = (JSONObject) o;
                 Bukkit.broadcastMessage(oo.toJSONString());
-                if (!oo.get("claimID").toString().equalsIgnoreCase(getClaimID(chunk))) {
-                    b.add(oo);
+                JSONObject ooo = (JSONObject) oo;
+                if (!ooo.get("claimID").toString().equalsIgnoreCase(getClaimID(chunk))) {
+                    b.add(ooo);
                 }
             }
             FileWriter file = new FileWriter("./plugins/KKClaims/claims.json");
