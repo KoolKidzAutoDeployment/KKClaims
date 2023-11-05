@@ -4,7 +4,6 @@ import com.koolkidzmc.kkclaims.KKClaims;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Particle;
-import org.bukkit.entity.Player;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -16,7 +15,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.Set;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -355,7 +353,8 @@ public class ClaimManager {
             JSONObject profileObject = new JSONObject();
             while(keys.hasNext()) {
                 Bukkit.broadcastMessage(keys.next().toString());
-                JSONObject key = (JSONObject) keys.next();
+                if (!keys.next().toString().equalsIgnoreCase(getClaimID(chunk))) return;
+                String key = keys.next().toString();
                 Bukkit.broadcastMessage(a2.get(key).toString());
             }
 
