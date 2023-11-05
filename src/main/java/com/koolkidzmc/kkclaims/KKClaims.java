@@ -59,7 +59,7 @@ public final class KKClaims extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinListener(this, claims), this);
         console.info("Listeners Started!");
         console.info("Starting Asynchronous Tasks");
-        TaskManager.Async.runTask(chunkBorders, 10);
+        TaskManager.Async.runTask(chunkBorders, 5);
         console.info("Asynchronous Tasks Started!");
     }
 
