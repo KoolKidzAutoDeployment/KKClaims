@@ -354,10 +354,11 @@ public class ClaimManager {
             while(keys.hasNext()) {
                 String key = keys.next().toString();
                 Bukkit.broadcastMessage(key + " -> " + getClaimID(chunk));
-                if (!key.equalsIgnoreCase(getClaimID(chunk))) return;
                 JSONObject a3 = (JSONObject) a2.get(key);
-                a2.remove(a3.get("claimID"));
-                return;
+                if (key.equalsIgnoreCase(getClaimID(chunk))) {
+                    a2.remove(a3.get("claimID"));
+                    return;
+                }
             }
 
             JSONArray b = new JSONArray();
