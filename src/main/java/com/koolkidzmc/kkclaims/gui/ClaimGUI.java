@@ -121,16 +121,19 @@ public class ClaimGUI extends FastInv {
     }
 
     public String getClaimedName(Chunk chunk, Player player) {
+        if (claims.getClaim(chunk).get("profile") == null) return "&7Available Claim";
         if (!claims.isClaimed(chunk)) return "&7Available Claim";
         if (claims.getClaimOwner(chunk).equals(player.getUniqueId())) return "&aYour Claim";
         return "&e" +  claims.getClaimOwner(chunk) + "'s Claim";
     }
     public String getClaimedStatus(Chunk chunk, Player player) {
+        if (claims.getClaim(chunk).get("profile") == null) return "&f&l| &7Status: &fAvailable";
         if (!claims.isClaimed(chunk)) return "&f&l| &7Status: &fAvailable";
         if (claims.getClaimOwner(chunk).equals(player.getUniqueId())) return "&f&l| &7Status: &aClaimed";
         return "&f&l| &7Status: &aClaimed";
     }
     public ItemStack getClaimedMat(Chunk chunk, Player player) {
+        if (claims.getClaim(chunk).get("profile") == null) return new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         if (!claims.isClaimed(chunk)) return new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemStack playerHead = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta skullMeta = (SkullMeta) playerHead.getItemMeta();

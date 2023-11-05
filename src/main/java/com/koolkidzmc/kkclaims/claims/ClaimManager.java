@@ -1,6 +1,7 @@
 package com.koolkidzmc.kkclaims.claims;
 
 import com.koolkidzmc.kkclaims.KKClaims;
+import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
@@ -35,6 +36,7 @@ public class ClaimManager {
         JSONObject claimObject = new JSONObject();
         claimObject.put("owner", owner.toString());
         claimObject.put("profile", owner + ".global");
+        claimObject.put("claimID", claimID);
         JSONObject preObject = new JSONObject();
         try {
             JSONArray a = (JSONArray) new JSONParser().parse(new FileReader("./plugins/KKClaims/claims.json"));
@@ -43,8 +45,6 @@ public class ClaimManager {
             }
             preObject.put(claimID, claimObject);
 
-            JSONArray allProfiles = new JSONArray();
-            allProfiles.add(preObject);
         } catch (IOException | ParseException e) {
             console.warning("Error: " + e);
         }
@@ -275,6 +275,7 @@ public class ClaimManager {
     public JSONObject getClaimProfile(Chunk chunk) {
         JSONObject claim = getClaim(chunk);
         if (claim == null) return null;
+        if (claim.get("profile") == null) return null;
         String profile = claim.get("profile").toString();
         char[] array = new char[100];
         try {
@@ -300,7 +301,7 @@ public class ClaimManager {
      * @return boolean
      */
     public boolean isClaimed(Chunk chunk) {
-        return getClaim(chunk) != null;
+        return getClaim(chunk) != null && getClaimOwner(chunk) != null;
     }
 
     public boolean checkClaimEdge(Chunk chunk, String dir) {
@@ -326,6 +327,7 @@ public class ClaimManager {
 
     public UUID getClaimOwner(Chunk chunk) {
         JSONObject claim = getClaim(chunk);
+        if (claim.get("owner") == null) return null;
         return UUID.fromString(claim.get("owner").toString());
     }
 
@@ -344,18 +346,21 @@ public class ClaimManager {
     }
 
     public void removeClaim(Chunk chunk) {
-        String claimID = getClaimID(chunk);
         try {
             JSONArray a = (JSONArray) new JSONParser().parse(new FileReader("./plugins/KKClaims/claims.json"));
-            a.remove(claimID);
-
+            JSONArray b = new JSONArray();
+            for (Object  o : a) {
+                JSONObject oo = (JSONObject) o;
+                if (!oo.get("claimID").toString().equalsIgnoreCase(getClaimID(chunk))) {
+                    b.add(oo);
+                }
+            }
             FileWriter file = new FileWriter("./plugins/KKClaims/claims.json");
-            file.write(a.toJSONString());
+            file.write(b.toJSONString());
             file.flush();
         } catch (ParseException | IOException e) {
             console.warning("Error while reading claim data: " + Arrays.toString(e.getStackTrace()));
         }
-
     }
 
     public void setClaimBorder(Chunk chunk, Particle particle) {

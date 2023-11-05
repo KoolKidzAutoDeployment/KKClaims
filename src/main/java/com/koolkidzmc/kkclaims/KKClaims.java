@@ -71,11 +71,19 @@ public final class KKClaims extends JavaPlugin {
         this.getCommand("forceclaim").setExecutor(new CommandUnClaim(this, claims));
         this.getCommand("particle").setExecutor(new CommandParticle(this, claims));
         this.getCommand("claim").setExecutor(new CommandClaim(this, claims));
-        this.getCommand("claim").setExecutor(new CommandUnClaim(this, claims));
+        this.getCommand("unclaim").setExecutor(new CommandUnClaim(this, claims));
     }
 
     Runnable chunkBorders = () -> {
         for (Player player : Bukkit.getOnlinePlayers()) {
+            Chunk cnk = player.getChunk();
+            for (int xOffset = -1; xOffset <= 1; xOffset++) {
+                for (int zOffset = -1; zOffset <= 1; zOffset++) {
+                    Chunk neighbor = player.getWorld().getChunkAt(cnk.getX() + xOffset, cnk.getZ() + zOffset);
+                    showBorder(neighbor, claims.getClaimBorder(neighbor), player);
+                }
+            }
+            /*
             Chunk cnk = player.getChunk();
             Chunk cnk1 = player.getWorld().getChunkAt(cnk.getX() + 1, cnk.getZ());
             Chunk cnk2 = player.getWorld().getChunkAt(cnk.getX(), cnk.getZ() + 1);
@@ -94,6 +102,8 @@ public final class KKClaims extends JavaPlugin {
             showBorder(cnk6, claims.getClaimBorder(cnk6), player);
             showBorder(cnk7, claims.getClaimBorder(cnk7), player);
             showBorder(cnk8, claims.getClaimBorder(cnk8), player);
+
+             */
         }
     };
 
