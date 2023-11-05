@@ -351,8 +351,8 @@ public class ClaimManager {
             JSONArray b = new JSONArray();
             for (Object  o : a) {
                 JSONObject oo = (JSONObject) o;
-                Bukkit.broadcastMessage(oo.toJSONString());
                 JSONObject ooo = (JSONObject) oo;
+                Bukkit.broadcastMessage(ooo.toJSONString());
                 if (!ooo.get("claimID").toString().equalsIgnoreCase(getClaimID(chunk))) {
                     b.add(ooo);
                 }
