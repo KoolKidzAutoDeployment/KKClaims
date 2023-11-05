@@ -354,6 +354,7 @@ public class ClaimManager {
             Iterator keys = a2.keySet().iterator();
             JSONObject profileObject = new JSONObject();
             while(keys.hasNext()) {
+                Bukkit.broadcastMessage(keys.next().toString());
                 JSONObject key = (JSONObject) keys.next();
                 Bukkit.broadcastMessage(a2.get(key).toString());
             }
