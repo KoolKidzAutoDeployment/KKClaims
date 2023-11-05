@@ -15,6 +15,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -346,17 +348,25 @@ public class ClaimManager {
     }
 
     public void removeClaim(Chunk chunk) {
+        String profile = getClaim(chunk).get("chunkID").toString();
+        char[] array = new char[100];
         try {
             JSONArray a = (JSONArray) new JSONParser().parse(new FileReader("./plugins/KKClaims/claims.json"));
-            JSONObject o = (JSONObject) a.get(0);
-            JSONObject toRemove = (JSONObject) a.get(2);
-            o.remove(toRemove);
+            JSONObject a2 = (JSONObject) a.get(0);
+            Iterator keys = a2.keySet().iterator();
+            JSONObject profileObject = new JSONObject();
+            while(keys.hasNext()) {
+                JSONObject key = (JSONObject) keys.next();
+                Bukkit.broadcastMessage(a2.get(key).toString());
+            }
 
             JSONArray b = new JSONArray();
-            b.add(o);
+            /*
             FileWriter file = new FileWriter("./plugins/KKClaims/claims.json");
             file.write(b.toJSONString());
             file.flush();
+
+             */
         } catch (ParseException | IOException e) {
             console.warning("Error while reading claim data: " + Arrays.toString(e.getStackTrace()));
         }
