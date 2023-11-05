@@ -1,7 +1,6 @@
 package com.koolkidzmc.kkclaims.claims;
 
 import com.koolkidzmc.kkclaims.KKClaims;
-import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Particle;
 import org.json.simple.JSONArray;
@@ -348,18 +347,20 @@ public class ClaimManager {
         try {
             JSONArray a = (JSONArray) new JSONParser().parse(new FileReader("./plugins/KKClaims/claims.json"));
             JSONObject a2 = (JSONObject) a.get(0);
+            JSONObject a4 = new JSONObject();
             for (Object o : a2.keySet()) {
                 String key = o.toString();
-                Bukkit.broadcastMessage(key + " -> " + getClaimID(chunk));
                 JSONObject a3 = (JSONObject) a2.get(key);
                 if (key.equalsIgnoreCase(getClaimID(chunk))) {
-                    a2.remove(a3.get("claimID"));
+                    a4.put(a3.get("claimID"), a3);
                     return;
                 }
             }
 
+            JSONArray arr = new JSONArray();
+            arr.add(a4);
             FileWriter file = new FileWriter("./plugins/KKClaims/claims.json");
-            file.write(a2.toJSONString());
+            file.write(arr.toJSONString());
             file.flush();
         } catch (ParseException | IOException e) {
             console.warning("Error while reading claim data: " + Arrays.toString(e.getStackTrace()));
