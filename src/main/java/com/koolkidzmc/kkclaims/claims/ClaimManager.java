@@ -352,13 +352,10 @@ public class ClaimManager {
             for (Object  o : a) {
                 JSONObject oo = (JSONObject) o;
                 JSONObject ooo = (JSONObject) oo.get(getClaimID(chunk));
-                Bukkit.broadcastMessage(ooo.toJSONString());
-                if (!ooo.get("claimID").toString().equalsIgnoreCase(getClaimID(chunk))) {
-                    b.add(ooo);
-                }
+                a.remove(ooo);
             }
             FileWriter file = new FileWriter("./plugins/KKClaims/claims.json");
-            file.write(b.toJSONString());
+            file.write(a.toJSONString());
             file.flush();
         } catch (ParseException | IOException e) {
             console.warning("Error while reading claim data: " + Arrays.toString(e.getStackTrace()));
