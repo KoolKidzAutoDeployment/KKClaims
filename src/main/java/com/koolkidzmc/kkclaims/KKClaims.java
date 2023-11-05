@@ -33,6 +33,7 @@ public final class KKClaims extends JavaPlugin {
             File f = new File("./plugins/KKClaims/claims.json");
             if (!f.exists()) {
                 FileWriter file = new FileWriter("./plugins/KKClaims/claims.json");
+                file.append("[]");
                 file.flush();
             }
         } catch (IOException e) {
@@ -43,6 +44,7 @@ public final class KKClaims extends JavaPlugin {
             File f = new File("./plugins/KKClaims/profiles.json");
             if (!f.exists()) {
                 FileWriter file = new FileWriter("./plugins/KKClaims/profiles.json");
+                file.append("[]");
                 file.flush();
             }
         } catch (IOException e) {
