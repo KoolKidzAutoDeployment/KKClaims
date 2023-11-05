@@ -348,8 +348,6 @@ public class ClaimManager {
     }
 
     public void removeClaim(Chunk chunk) {
-        String profile = getClaim(chunk).get("chunkID").toString();
-        char[] array = new char[100];
         try {
             JSONArray a = (JSONArray) new JSONParser().parse(new FileReader("./plugins/KKClaims/claims.json"));
             JSONObject a2 = (JSONObject) a.get(0);
