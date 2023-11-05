@@ -25,8 +25,14 @@ public class CommandParticle implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player player) {
             if (args.length == 0) {
-                new ParticlesGUI(plugin, claims, player).open(player);
-                SoundAPI.success(player);
+                Chunk chunk = player.getLocation().getChunk();
+                if (!claims.getClaimOwner(chunk).equals(player.getUniqueId())) {
+                    player.sendMessage("You cannot change other players claim settings!");
+                } else {
+                    new ParticlesGUI(plugin, claims, player).open(player);
+                    SoundAPI.success(player);
+                }
+                return true;
             }
 
             Chunk chunk = player.getLocation().getChunk();

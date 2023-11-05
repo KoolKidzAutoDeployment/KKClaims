@@ -7,14 +7,7 @@ import com.koolkidzmc.kkclaims.utils.FastInv;
 import com.koolkidzmc.kkclaims.utils.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.Particle;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.util.StringUtil;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class ParticlesGUI extends FastInv {
     private boolean preventClose = false;
@@ -27,10 +20,11 @@ public class ParticlesGUI extends FastInv {
         int index = 0;
         for (Particle particle : Particle.values()) {
             if (index == 45) return;
-            setItem(index, new ItemBuilder(Material.FIREWORK_ROCKET).name(ColorAPI.formatString("&f" + particle.name())).build());
+            setItem(index, new ItemBuilder(Material.FIREWORK_ROCKET).name(ColorAPI.formatString("&f" + particle.name())).build(),
+                    e -> {
+                        claims.setClaimBorder(player.getChunk(), particle);
+                    });
             ++index;
         }
-
-
     }
 }
