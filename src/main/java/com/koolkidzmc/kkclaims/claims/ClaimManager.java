@@ -1,7 +1,6 @@
 package com.koolkidzmc.kkclaims.claims;
 
 import com.koolkidzmc.kkclaims.KKClaims;
-import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Particle;
 import org.json.simple.JSONArray;
@@ -353,9 +352,7 @@ public class ClaimManager {
                 String key = o.toString();
                 JSONObject a3 = (JSONObject) a2.get(key);
                 if (!key.equalsIgnoreCase(getClaimID(chunk))) {
-                    Bukkit.broadcastMessage(a3.get("claimID") + ": " + a3);
                     a4.put(a3.get("claimID"), a3);
-                    Bukkit.broadcastMessage(a4.toJSONString());
                 }
             }
 
