@@ -356,7 +356,6 @@ public class ClaimManager {
                     Bukkit.broadcastMessage(a3.get("claimID") + ": " + a3);
                     a4.put(a3.get("claimID"), a3);
                     Bukkit.broadcastMessage(a4.toJSONString());
-                    return;
                 }
             }
 
