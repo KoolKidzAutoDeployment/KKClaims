@@ -120,7 +120,7 @@ public final class KKClaims extends JavaPlugin {
         if (!claims.checkClaimEdge(chunk, "north")) {
             for (int x = minX; x < minX + 17; x++) {
                 for (int y = minY; y < minY + 5; y++) {
-                    player.spawnParticle(particle, x, y, minZ, 1);
+                    player.spawnParticle(particle, x, y, minZ, 1, 0, 0, 0, 0);
                 }
             }
         }
@@ -128,7 +128,7 @@ public final class KKClaims extends JavaPlugin {
         if (!claims.checkClaimEdge(chunk, "south")) {
             for (int x = minX; x < minX + 17; x++) {
                 for (int y = minY; y < minY + 5; y++) {
-                    player.spawnParticle(particle, x, y, minZ + 16, 1);
+                    player.spawnParticle(particle, x, y, minZ + 16, 1, 0, 0, 0, 0);
                 }
             }
         }
@@ -136,7 +136,7 @@ public final class KKClaims extends JavaPlugin {
         if (!claims.checkClaimEdge(chunk, "west")) {
             for (int z = minZ; z < minZ + 17; z++) {
                 for (int y = minY; y < minY + 5; y++) {
-                    player.spawnParticle(particle, minX, y, z, 1);
+                    player.spawnParticle(particle, minX, y, z, 1, 0, 0, 0, 0);
                 }
             }
         }
@@ -144,7 +144,7 @@ public final class KKClaims extends JavaPlugin {
         if (!claims.checkClaimEdge(chunk, "east")) {
             for (int z = minZ; z < minZ + 17; z++) {
                 for (int y = minY; y < minY + 5; y++) {
-                    player.spawnParticle(particle, minX + 16, y, z, 1);
+                    player.spawnParticle(particle, minX + 16, y, z, 1, 0, 0, 0, 0);
                 }
             }
         }
