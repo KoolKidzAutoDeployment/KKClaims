@@ -3,6 +3,7 @@ package com.koolkidzmc.kkclaims.commands;
 import com.koolkidzmc.kkclaims.KKClaims;
 import com.koolkidzmc.kkclaims.claims.ClaimManager;
 import com.koolkidzmc.kkclaims.gui.ParticlesGUI;
+import com.koolkidzmc.kkclaims.utils.SoundAPI;
 import org.bukkit.Chunk;
 import org.bukkit.Particle;
 import org.bukkit.command.*;
@@ -25,6 +26,7 @@ public class CommandParticle implements CommandExecutor, TabCompleter {
         if (sender instanceof Player player) {
             if (args.length == 0) {
                 new ParticlesGUI(plugin, claims, player).open(player);
+                SoundAPI.success(player);
             }
 
             Chunk chunk = player.getLocation().getChunk();
