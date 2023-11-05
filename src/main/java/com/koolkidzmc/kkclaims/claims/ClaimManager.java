@@ -348,13 +348,12 @@ public class ClaimManager {
     public void removeClaim(Chunk chunk) {
         try {
             JSONArray a = (JSONArray) new JSONParser().parse(new FileReader("./plugins/KKClaims/claims.json"));
+            JSONObject o = (JSONObject) a.get(0);
+            JSONObject toRemove = (JSONObject) a.get(2);
+            o.remove(toRemove);
+
             JSONArray b = new JSONArray();
-            for (Object  o : a) {
-                JSONObject oo = (JSONObject) o;
-                b.add(oo);
-                JSONObject ooo = (JSONObject) oo.get(getClaimID(chunk));
-                b.remove(ooo);
-            }
+            b.add(o);
             FileWriter file = new FileWriter("./plugins/KKClaims/claims.json");
             file.write(b.toJSONString());
             file.flush();
