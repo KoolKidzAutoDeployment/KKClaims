@@ -2,6 +2,7 @@ package com.koolkidzmc.kkclaims.commands;
 
 import com.koolkidzmc.kkclaims.KKClaims;
 import com.koolkidzmc.kkclaims.claims.ClaimManager;
+import com.koolkidzmc.kkclaims.gui.ParticlesGUI;
 import org.bukkit.Chunk;
 import org.bukkit.Particle;
 import org.bukkit.command.*;
@@ -22,7 +23,9 @@ public class CommandParticle implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player player) {
-            if (args.length == 0) return false;
+            if (args.length == 0) {
+                new ParticlesGUI(plugin, claims, player).open(player);
+            }
 
             Chunk chunk = player.getLocation().getChunk();
             Particle particle = Particle.valueOf(args[0]);
