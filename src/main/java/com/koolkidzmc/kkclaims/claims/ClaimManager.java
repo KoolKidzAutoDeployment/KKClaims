@@ -351,11 +351,12 @@ public class ClaimManager {
             JSONArray b = new JSONArray();
             for (Object  o : a) {
                 JSONObject oo = (JSONObject) o;
+                b.add(oo);
                 JSONObject ooo = (JSONObject) oo.get(getClaimID(chunk));
-                a.remove(ooo);
+                b.remove(ooo);
             }
             FileWriter file = new FileWriter("./plugins/KKClaims/claims.json");
-            file.write(a.toJSONString());
+            file.write(b.toJSONString());
             file.flush();
         } catch (ParseException | IOException e) {
             console.warning("Error while reading claim data: " + Arrays.toString(e.getStackTrace()));
