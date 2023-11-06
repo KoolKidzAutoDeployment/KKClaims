@@ -23,7 +23,7 @@ public class ParticlesGUI extends FastInv {
         this.claims = claims;
         int index = 0;
         for (Particle particle : Particle.values()) {
-            if (index == 45) return;
+            if (index == 300) return;
             if (particle != Particle.VILLAGER_HAPPY) return;
             ItemStack item = new ItemStack(Material.FIREWORK_STAR, 1);
             ItemMeta im = item.getItemMeta();
@@ -31,7 +31,7 @@ public class ParticlesGUI extends FastInv {
             FireworkEffect aa = FireworkEffect.builder().withColor(plugin.getConfig().getColor("borders." + particle + ".color")).build();
             metaFw.setEffect(aa);
             item.setItemMeta(metaFw);
-            setItem(index, new ItemBuilder(item).name(ColorAPI.formatString("&f" + particle.name())).build(),
+            setItem(0, new ItemBuilder(item).name(ColorAPI.formatString("&f" + particle.name())).build(),
                     e -> {
                         claims.setClaimBorder(player.getChunk(), particle);
                     });
