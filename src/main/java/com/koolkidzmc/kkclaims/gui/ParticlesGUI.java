@@ -5,13 +5,13 @@ import com.koolkidzmc.kkclaims.claims.ClaimManager;
 import com.koolkidzmc.kkclaims.utils.ColorAPI;
 import com.koolkidzmc.kkclaims.utils.FastInv;
 import com.koolkidzmc.kkclaims.utils.ItemBuilder;
-import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.inventory.meta.FireworkEffectMeta;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class ParticlesGUI extends FastInv {
     private boolean preventClose = false;
@@ -25,11 +25,11 @@ public class ParticlesGUI extends FastInv {
         for (Particle particle : Particle.values()) {
             if (index == 45) return;
             ItemStack item = new ItemStack(Material.FIREWORK_STAR, 1);
-            FireworkMeta fm = (FireworkMeta) item.getItemMeta();
-            fm.addEffect(FireworkEffect.builder()
-                    .withColor(Color.LIME)
-                    .build());
-            item.setItemMeta(fm);
+            ItemMeta im = item.getItemMeta();
+            FireworkEffectMeta metaFw = (FireworkEffectMeta) im;
+            FireworkEffect aa = FireworkEffect.builder().withColor(plugin.getConfig().getColor("borders." + particle + ".color")).build();
+            metaFw.setEffect(aa);
+            item.setItemMeta(metaFw);
             setItem(index, new ItemBuilder(item).name(ColorAPI.formatString("&f" + particle.name())).build(),
                     e -> {
                         claims.setClaimBorder(player.getChunk(), particle);

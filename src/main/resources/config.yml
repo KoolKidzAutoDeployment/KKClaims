@@ -4,7 +4,9 @@ prefix: "&#fb249f&lC&#fb2fab&lL&#fc3bb7&lA&#fc46c3&lI&#fc51cf&lM&#fc5cdb&lI&#fd6
 borders:
   VILLAGER_HAPPY:
     item: FIREWORK_STAR
-    item_meta: "TEST"
+    # vv For firework stars only! vv
+    color: Color.LIME
+    # ^^ For firework stars only! ^^
     name: "&e&lDefault Border"
     description:
       - ""
