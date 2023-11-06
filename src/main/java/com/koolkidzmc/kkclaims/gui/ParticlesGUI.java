@@ -31,8 +31,8 @@ public class ParticlesGUI extends FastInv {
             FireworkEffect aa = FireworkEffect.builder().withColor(plugin.getConfig().getColor("borders." + particle + ".color")).build();
             metaFw.setEffect(aa);
             item.setItemMeta(metaFw);
-            Bukkit.broadcastMessage(particle.toString());
-            Bukkit.broadcastMessage(item.toString());
+            Bukkit.broadcastMessage(particle.name());
+            Bukkit.broadcastMessage(item.getItemMeta().getAsString());
             setItem(0, new ItemBuilder(item).name(ColorAPI.formatString("&f" + particle.name())).build(),
                     e -> {
                         claims.setClaimBorder(player.getChunk(), particle);
