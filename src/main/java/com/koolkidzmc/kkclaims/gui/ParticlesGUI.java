@@ -24,7 +24,8 @@ public class ParticlesGUI extends FastInv {
         this.claims = claims;
         int index = 0;
         for (Particle particle : Particle.values()) {
-            //if (particle != Particle.VILLAGER_HAPPY) return;
+            Bukkit.broadcastMessage(particle.toString());
+            if (particle != Particle.VILLAGER_HAPPY) return;
             ItemStack item = new ItemStack(Material.FIREWORK_STAR, 1);
             ItemMeta im = item.getItemMeta();
             FireworkEffectMeta metaFw = (FireworkEffectMeta) im;
