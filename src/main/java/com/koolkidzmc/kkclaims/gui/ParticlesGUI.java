@@ -24,7 +24,6 @@ public class ParticlesGUI extends FastInv {
         this.claims = claims;
         int index = 0;
         for (Particle particle : Particle.values()) {
-            if (index == 300) return;
             if (particle != Particle.VILLAGER_HAPPY) return;
             ItemStack item = new ItemStack(Material.FIREWORK_STAR, 1);
             ItemMeta im = item.getItemMeta();
