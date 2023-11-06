@@ -25,7 +25,8 @@ public class ParticlesGUI extends FastInv {
         int index = 0;
         for (Particle particle : Particle.values()) {
             Bukkit.broadcastMessage(particle.toString());
-            if (particle != Particle.VILLAGER_HAPPY) return;
+            if (particle == Particle.VILLAGER_HAPPY) {
+
             ItemStack item = new ItemStack(Material.FIREWORK_STAR, 1);
             ItemMeta im = item.getItemMeta();
             FireworkEffectMeta metaFw = (FireworkEffectMeta) im;
@@ -39,6 +40,7 @@ public class ParticlesGUI extends FastInv {
                         claims.setClaimBorder(player.getChunk(), particle);
                     });
             ++index;
+            }
         }
     }
 }
