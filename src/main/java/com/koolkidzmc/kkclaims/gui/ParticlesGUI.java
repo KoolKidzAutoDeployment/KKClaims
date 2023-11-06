@@ -5,6 +5,7 @@ import com.koolkidzmc.kkclaims.claims.ClaimManager;
 import com.koolkidzmc.kkclaims.utils.ColorAPI;
 import com.koolkidzmc.kkclaims.utils.FastInv;
 import com.koolkidzmc.kkclaims.utils.ItemBuilder;
+import org.bukkit.Bukkit;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -31,6 +32,8 @@ public class ParticlesGUI extends FastInv {
             FireworkEffect aa = FireworkEffect.builder().withColor(plugin.getConfig().getColor("borders." + particle + ".color")).build();
             metaFw.setEffect(aa);
             item.setItemMeta(metaFw);
+            Bukkit.broadcastMessage(particle.toString());
+            Bukkit.broadcastMessage(item.toString());
             setItem(0, new ItemBuilder(item).name(ColorAPI.formatString("&f" + particle.name())).build(),
                     e -> {
                         claims.setClaimBorder(player.getChunk(), particle);
