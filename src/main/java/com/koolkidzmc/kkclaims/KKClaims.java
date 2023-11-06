@@ -2,8 +2,8 @@ package com.koolkidzmc.kkclaims;
 
 import com.koolkidzmc.kkclaims.claims.ClaimManager;
 import com.koolkidzmc.kkclaims.commands.CommandClaim;
-import com.koolkidzmc.kkclaims.commands.CommandUnClaim;
 import com.koolkidzmc.kkclaims.commands.CommandParticle;
+import com.koolkidzmc.kkclaims.commands.CommandUnClaim;
 import com.koolkidzmc.kkclaims.listeners.JoinListener;
 import com.koolkidzmc.kkclaims.listeners.PreventionListener;
 import com.koolkidzmc.kkclaims.utils.FastInvManager;
@@ -14,7 +14,9 @@ import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 public final class KKClaims extends JavaPlugin {
@@ -70,7 +72,6 @@ public final class KKClaims extends JavaPlugin {
     }
 
     public void loadCommands() {
-        this.getCommand("forceclaim").setExecutor(new CommandUnClaim(this, claims));
         this.getCommand("particle").setExecutor(new CommandParticle(this, claims));
         this.getCommand("claim").setExecutor(new CommandClaim(this, claims));
         this.getCommand("unclaim").setExecutor(new CommandUnClaim(this, claims));

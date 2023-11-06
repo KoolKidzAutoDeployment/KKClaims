@@ -34,13 +34,6 @@ commands:
       - removeclaim
     permission: kkclaims.claim
     permission-message: '&cYou are not allowed to use that command!'
-  forceclaim:
-      description: 'Claim Land'
-      usage: '/forceclaim'
-      aliases:
-        - forceclaim
-      permission: kkclaims.claim
-      permission-message: '&cYou are not allowed to use that command!'
   particle:
     description: 'Change Claim Border'
     usage: '/particle <particle>'
