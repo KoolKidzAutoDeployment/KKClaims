@@ -41,7 +41,7 @@ public final class KKClaims extends JavaPlugin {
         if (key == null || key.isEmpty()) {
             console.warning("*** No Licence Key Found in config.yml! ***");
             console.warning("-*-* Plugin Will Now Disable! *-*-");
-            this.getPluginLoader().disablePlugin(this);
+            Bukkit.getPluginManager().disablePlugin(this);
         }
         checkLicenceKey(key);
         console.info("Resuming File Loader");
@@ -136,13 +136,13 @@ public final class KKClaims extends JavaPlugin {
             } else {
                 console.warning("-*#-*#-*# Licence Key Not Valid! #*-#*-#*-");
                 console.warning("*** Plugin Will Now Disable! ***");
-                this.getPluginLoader().disablePlugin(this);
+                Bukkit.getPluginManager().disablePlugin(this);
             }
         } catch (IOException e) {
             console.info("Error: " + e);
             console.warning("-*#-*#-*# Licence Key Failed To Load! #*-#*-#*-");
             console.warning("*** Plugin Will Now Disable! ***");
-            this.getPluginLoader().disablePlugin(this);
+            Bukkit.getPluginManager().disablePlugin(this);
         }
     }
 
