@@ -50,6 +50,7 @@ public class ParticlesGUI extends FastInv {
                     e -> {
                         claims.setClaimBorder(player.getChunk(), particle);
                         SoundAPI.success(player);
+                        new ParticlesGUI(plugin, claims, player).open(player);
                     });
         }
     }
