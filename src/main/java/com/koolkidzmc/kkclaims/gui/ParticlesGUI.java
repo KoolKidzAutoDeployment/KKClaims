@@ -29,7 +29,7 @@ public class ParticlesGUI extends FastInv {
             ItemStack item = new ItemStack(Material.FIREWORK_STAR, 1);
             ItemMeta im = item.getItemMeta();
             FireworkEffectMeta metaFw = (FireworkEffectMeta) im;
-            Bukkit.broadcastMessage(plugin.getConfig().getObject("borders", String.class));
+            Bukkit.broadcastMessage(plugin.getConfig().get("borders").toString());
             Bukkit.broadcastMessage(String.valueOf(plugin.getConfig().getColor("borders." + particle + ".color")));
                 FireworkEffect aa = FireworkEffect.builder().withColor(plugin.getConfig().getColor("borders." + particle + ".color")).build();
             metaFw.setEffect(aa);
