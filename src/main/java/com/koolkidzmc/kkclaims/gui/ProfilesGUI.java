@@ -38,17 +38,17 @@ public class ProfilesGUI extends FastInv {
             slotMap.put(i, i + 10);
         }
 
-        setItem(slotMap.get(8), new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
-        setItem(slotMap.get(9), new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
         setItem(slotMap.get(10), new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
         setItem(slotMap.get(11), new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
         setItem(slotMap.get(12), new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
+        setItem(slotMap.get(13), new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
+        setItem(slotMap.get(14), new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
 
         //TODO: for loop to iterate through profiles and show all of the players profiles
-        int i = 7;
+        int i = 10;
         for (Object o : claims.getPlayerProfiles(player)) {
             JSONObject profile = (JSONObject) o;
-            setItem(slotMap.get(i + 1), new ItemBuilder(Material.LIME_STAINED_GLASS_PANE).name(ColorAPI.formatString("&a&l" + profile.get("name"))).build(),
+            setItem(slotMap.get(i), new ItemBuilder(Material.LIME_STAINED_GLASS_PANE).name(ColorAPI.formatString("&a&l" + profile.get("name"))).build(),
                     e -> {
                         SoundAPI.click((Player) e.getWhoClicked());
                         new ParticlesGUI(plugin, claims, player).open((Player) e.getWhoClicked());
