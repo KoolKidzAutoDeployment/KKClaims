@@ -144,7 +144,6 @@ public final class KKClaims extends JavaPlugin {
                 keys.append(inputLine);
             }
             in.close();
-            console.info(keys.toString());
             if (keys.toString().contains(key)) {
                 return true;
             } else {
