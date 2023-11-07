@@ -35,20 +35,14 @@ public class ParticlesGUI extends FastInv {
                             .withColor(getConfColor(confColor)).build();
                 metaFw.setEffect(aa);
                 item.setItemMeta(metaFw);
-                item.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-                setItem(slot, new ItemBuilder(item).name(ColorAPI.formatString(name)).build(),
-                        e -> {
-                            claims.setClaimBorder(player.getChunk(), particle);
-                            SoundAPI.success(player);
-                        });
-            } else {
-                item.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-                setItem(slot, new ItemBuilder(item).name(ColorAPI.formatString(name)).build(),
-                        e -> {
-                            claims.setClaimBorder(player.getChunk(), particle);
-                            SoundAPI.success(player);
-                        });
+                item.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
             }
+            item.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+            setItem(slot, new ItemBuilder(item).name(ColorAPI.formatString(name)).build(),
+                    e -> {
+                        claims.setClaimBorder(player.getChunk(), particle);
+                        SoundAPI.success(player);
+                    });
         }
     }
 
