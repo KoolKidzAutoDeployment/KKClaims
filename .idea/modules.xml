@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/KKClaims.main.iml" filepath="$PROJECT_DIR$/.idea/modules/KKClaims.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.koolkidzmc.KKClaims.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.koolkidzmc.KKClaims.main.iml" />
     </modules>
   </component>
 </project>

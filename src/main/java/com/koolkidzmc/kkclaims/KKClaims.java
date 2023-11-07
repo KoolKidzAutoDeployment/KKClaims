@@ -11,17 +11,21 @@ import com.koolkidzmc.kkclaims.utils.TaskManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Particle;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.logging.Logger;
 
 public final class KKClaims extends JavaPlugin {
     Logger console = getLogger();
     ClaimManager claims = new ClaimManager(this, console);
+    FileConfiguration config = getConfig();
 
     @Override
     public void onEnable() {
@@ -31,6 +35,14 @@ public final class KKClaims extends JavaPlugin {
         saveDefaultConfig();
         reloadConfig();
         console.info("config.yml loaded!");
+        console.info("Pausing File Check!");
+        console.info("Checking Licence Key...");
+        String key = config.get("licence-key").toString();
+        if (key == null || key.isEmpty()) {
+            console.warning("*** No Licence Key Found in config.yml! ***");
+            console.warning("-*-* Plugin Will Now Disable! *-*-");
+        }
+        checkLicenceKey(key);
         try {
             File f = new File("./plugins/KKClaims/claims.json");
             if (!f.exists()) {
@@ -109,6 +121,28 @@ public final class KKClaims extends JavaPlugin {
              */
         }
     };
+
+    public void checkLicenceKey(String key) {
+        try {
+            URL url = new URL("https://api.github.com/repos/KoolKidzAutoDeployment/KKClaims-Licence-Keys/contents/keys.txt");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Authorization", "Bearer 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");
+            con.setRequestProperty("X-GitHub-Api-Version", "2022-11-28");
+            con.setRequestProperty("Accept", "application/vnd/github.v3.raw");
+            con.connect();
+            String keys = con.getContent().toString();
+            if (keys.contains(key)) {
+                console.info("Licence Key Accepted!");
+            } else {
+                console.warning("-*#-*#-*# Licence Key Not Valid! #*-#*-#*-");
+                console.warning("*** Plugin Will Now Disable! ***");
+                this.getPluginLoader().disablePlugin(this);
+            }
+        } catch (IOException e) {
+            console.info("Error: " + e);
+        }
+    }
 
     public void showBorder(Chunk chunk, Particle particle, Player player) {
         if (!claims.isClaimed(chunk)) return;
