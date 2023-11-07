@@ -6,12 +6,17 @@ import com.koolkidzmc.kkclaims.utils.ColorAPI;
 import com.koolkidzmc.kkclaims.utils.FastInv;
 import com.koolkidzmc.kkclaims.utils.ItemBuilder;
 import com.koolkidzmc.kkclaims.utils.SoundAPI;
-import org.bukkit.*;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
+import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkEffectMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.List;
 
 public class ParticlesGUI extends FastInv {
     private boolean preventClose = false;
@@ -25,6 +30,7 @@ public class ParticlesGUI extends FastInv {
             Particle particle = Particle.valueOf(key);
             String name = plugin.getConfig().getString("borders." + key + ".name");
             Material material = Material.valueOf(plugin.getConfig().getString("borders." + key + ".item"));
+            List<String> lore = plugin.getConfig().getStringList("borders." + key + ".description");
             int slot = plugin.getConfig().getInt("borders." + key + ".slot");
             ItemStack item = new ItemStack(material, 1);
             if (material == Material.FIREWORK_STAR) {
@@ -37,8 +43,10 @@ public class ParticlesGUI extends FastInv {
                 item.setItemMeta(metaFw);
                 item.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
             }
+            if (claims.getClaimBorder(player.getChunk()) == particle)
+                name = plugin.getConfig().getString("border-selected") + name;
             item.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-            setItem(slot, new ItemBuilder(item).name(ColorAPI.formatString(name)).build(),
+            setItem(slot, new ItemBuilder(item).name(ColorAPI.formatString(name)).lore(ColorAPI.formatStringList(lore)).build(),
                     e -> {
                         claims.setClaimBorder(player.getChunk(), particle);
                         SoundAPI.success(player);
