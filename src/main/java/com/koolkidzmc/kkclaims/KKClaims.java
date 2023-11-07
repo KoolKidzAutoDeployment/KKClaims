@@ -128,7 +128,7 @@ public final class KKClaims extends JavaPlugin {
             con.setRequestMethod("GET");
             con.setRequestProperty("Authorization", "Bearer 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");
             con.setRequestProperty("X-GitHub-Api-Version", "2022-11-28");
-            con.setRequestProperty("Accept", "application/vnd/github.v3.raw");
+            con.setRequestProperty("Accept", "application/vnd.github.v3.raw");
             con.connect();
             String keys = con.getContent().toString();
             if (keys.contains(key)) {
@@ -140,6 +140,9 @@ public final class KKClaims extends JavaPlugin {
             }
         } catch (IOException e) {
             console.info("Error: " + e);
+            console.warning("-*#-*#-*# Licence Key Failed To Load! #*-#*-#*-");
+            console.warning("*** Plugin Will Now Disable! ***");
+            this.getPluginLoader().disablePlugin(this);
         }
     }
 
