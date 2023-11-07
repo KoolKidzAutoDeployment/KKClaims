@@ -42,8 +42,16 @@ public final class KKClaims extends JavaPlugin {
             console.warning("*** No Licence Key Found in config.yml! ***");
             console.warning("-*-* Plugin Will Now Disable! *-*-");
             Bukkit.getPluginManager().disablePlugin(this);
+            return;
         }
-        checkLicenceKey(key);
+        if (!checkLicenceKey(key)) {
+            console.warning("-*#-*#-*# Licence Key Not Valid! #*-#*-#*-");
+            console.warning("*** Plugin Will Now Disable! ***");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        } else {
+            console.info("Licence Key Accepted!");
+        }
         console.info("Resuming File Loader");
         try {
             File f = new File("./plugins/KKClaims/claims.json");
@@ -121,7 +129,7 @@ public final class KKClaims extends JavaPlugin {
         }
     };
 
-    public void checkLicenceKey(String key) {
+    public boolean checkLicenceKey(String key) {
         try {
             URL url = new URL("https://api.github.com/repos/KoolKidzAutoDeployment/KKClaims-Licence-Keys/contents/keys.txt");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -132,17 +140,13 @@ public final class KKClaims extends JavaPlugin {
             con.connect();
             String keys = con.getContent().toString();
             if (keys.contains(key)) {
-                console.info("Licence Key Accepted!");
+                return true;
             } else {
-                console.warning("-*#-*#-*# Licence Key Not Valid! #*-#*-#*-");
-                console.warning("*** Plugin Will Now Disable! ***");
-                Bukkit.getPluginManager().disablePlugin(this);
+                return false;
             }
         } catch (IOException e) {
             console.info("Error: " + e);
-            console.warning("-*#-*#-*# Licence Key Failed To Load! #*-#*-#*-");
-            console.warning("*** Plugin Will Now Disable! ***");
-            Bukkit.getPluginManager().disablePlugin(this);
+            return false;
         }
     }
 
