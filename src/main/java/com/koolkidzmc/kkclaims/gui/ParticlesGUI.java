@@ -26,10 +26,9 @@ public class ParticlesGUI extends FastInv {
             ItemStack item = new ItemStack(Material.FIREWORK_STAR, 1);
             ItemMeta im = item.getItemMeta();
             FireworkEffectMeta metaFw = (FireworkEffectMeta) im;
-            Bukkit.broadcastMessage(plugin.getConfig().getString("borders." + particle.name() + ".color"));
-            Bukkit.broadcastMessage(plugin.getConfig().getColor("borders." + particle.name() + ".color").toString());
+            String confColor = plugin.getConfig().getString("borders." + particle.name() + ".color");
                 FireworkEffect aa = FireworkEffect.builder()
-                        .withColor(plugin.getConfig().getColor("borders." + particle.name() + ".color")).build();
+                        .withColor(getConfColor(confColor)).build();
             metaFw.setEffect(aa);
             item.setItemMeta(metaFw);
             Bukkit.broadcastMessage(particle.name());
@@ -41,5 +40,22 @@ public class ParticlesGUI extends FastInv {
             ++index;
             }
         }
+    }
+
+    public Color getConfColor(String color) {
+        if (color.equalsIgnoreCase("lime")) return Color.LIME;
+        if (color.equalsIgnoreCase("black")) return Color.BLACK;
+        if (color.equalsIgnoreCase("aqua")) return Color.AQUA;
+        if (color.equalsIgnoreCase("blue")) return Color.BLUE;
+        if (color.equalsIgnoreCase("green")) return Color.GREEN;
+        if (color.equalsIgnoreCase("gray")) return Color.GRAY;
+        if (color.equalsIgnoreCase("purple")) return Color.PURPLE;
+        if (color.equalsIgnoreCase("magenta")) return Color.FUCHSIA;
+        if (color.equalsIgnoreCase("white")) return Color.WHITE;
+        if (color.equalsIgnoreCase("dark blue")) return Color.NAVY;
+        if (color.equalsIgnoreCase("yellow")) return Color.YELLOW;
+        if (color.equalsIgnoreCase("red")) return Color.RED;
+        if (color.equalsIgnoreCase("orange")) return Color.ORANGE;
+        return Color.LIME;
     }
 }
