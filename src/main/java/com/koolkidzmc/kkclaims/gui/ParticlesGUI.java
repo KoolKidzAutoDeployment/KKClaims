@@ -29,14 +29,12 @@ public class ParticlesGUI extends FastInv {
             ItemStack item = new ItemStack(Material.FIREWORK_STAR, 1);
             ItemMeta im = item.getItemMeta();
             FireworkEffectMeta metaFw = (FireworkEffectMeta) im;
-            Bukkit.broadcastMessage(plugin.getConfig().get("borders.VILLAGER_HAPPY.name").toString());
-            Bukkit.broadcastMessage(String.valueOf(plugin.getConfig().getColor("borders." + particle + ".color")));
-                FireworkEffect aa = FireworkEffect.builder().withColor(plugin.getConfig().getColor("borders." + particle + ".color")).build();
+                FireworkEffect aa = FireworkEffect.builder().withColor(plugin.getConfig().getColor("borders." + particle.name() + ".color")).build();
             metaFw.setEffect(aa);
             item.setItemMeta(metaFw);
             Bukkit.broadcastMessage(particle.name());
             Bukkit.broadcastMessage(item.getItemMeta().getAsString());
-            setItem(0, new ItemBuilder(item).name(ColorAPI.formatString("&f" + particle.name())).build(),
+            setItem(0, new ItemBuilder(item).name(ColorAPI.formatString(plugin.getConfig().getString("borders." + particle.name() + ".name"))).build(),
                     e -> {
                         claims.setClaimBorder(player.getChunk(), particle);
                     });
