@@ -15,9 +15,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.logging.Logger;
@@ -138,9 +136,16 @@ public final class KKClaims extends JavaPlugin {
             con.setRequestProperty("X-GitHub-Api-Version", "2022-11-28");
             con.setRequestProperty("Accept", "application/vnd.github.v3.raw");
             con.connect();
-            String keys = con.getContent().toString();
-            console.info(keys);
-            if (keys.contains(key)) {
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer keys = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                keys.append(inputLine);
+            }
+            in.close();
+            console.info(keys.toString());
+            if (keys.toString().contains(key)) {
                 return true;
             } else {
                 return false;
