@@ -29,7 +29,7 @@ public class ParticlesGUI extends FastInv {
             Bukkit.broadcastMessage(plugin.getConfig().getString("borders." + particle.name() + ".color"));
             Bukkit.broadcastMessage(plugin.getConfig().getColor("borders." + particle.name() + ".color").toString());
                 FireworkEffect aa = FireworkEffect.builder()
-                        .withColor((Color) plugin.getConfig().getColor("borders." + particle.name() + ".color")).build();
+                        .withColor(plugin.getConfig().getColor("borders." + particle.name() + ".color")).build();
             metaFw.setEffect(aa);
             item.setItemMeta(metaFw);
             Bukkit.broadcastMessage(particle.name());
