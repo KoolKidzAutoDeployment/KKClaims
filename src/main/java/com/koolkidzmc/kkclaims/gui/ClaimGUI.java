@@ -15,7 +15,6 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class ClaimGUI extends FastInv {
     KKClaims plugin;
 
     public ClaimGUI(KKClaims plugin, ClaimManager claims, Player player) {
-        super(54, ColorAPI.formatString("&d&lKoolKidz &aClaiming"));
+        super(54, ColorAPI.formatString("&a&lClaims &7>> Claim Land"));
         this.plugin = plugin;
         this.claims = claims;
         int index = 0;

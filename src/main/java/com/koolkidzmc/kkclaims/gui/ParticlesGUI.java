@@ -16,16 +16,34 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkEffectMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ParticlesGUI extends FastInv {
     private boolean preventClose = false;
     ClaimManager claims;
     KKClaims plugin;
     public ParticlesGUI(KKClaims plugin, ClaimManager claims, Player player) {
-        super(54, ColorAPI.formatString("&d&lKoolKidz &aClaiming"));
+        super(54, ColorAPI.formatString("&a&lClaims &7>> &fProfile Border"));
         this.plugin = plugin;
         this.claims = claims;
+
+
+        for (int i = 0; i < 9; i++) {
+            setItem(i, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
+            setItem(i + 45, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
+        }
+        for (int i = 1; i < 5; i++) {
+            setItem(i * 9, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
+            setItem(i * 9 + 8, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
+        }
+        Map<Integer, Integer> slotMap = new HashMap<>();
+        for (int i = 0; i < 28; i++) {
+            slotMap.put(i, i + 10);
+        }
+
+
         for (String key : plugin.getConfig().getConfigurationSection("borders").getKeys(false)) {
             Particle particle = Particle.valueOf(key);
             String name = plugin.getConfig().getString("borders." + key + ".name");
@@ -46,13 +64,29 @@ public class ParticlesGUI extends FastInv {
             if (claims.getClaimBorder(player.getChunk()) == particle)
                 name = plugin.getConfig().getString("border-selected") + name;
             item.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-            setItem(slot, new ItemBuilder(item).name(ColorAPI.formatString(name)).lore(ColorAPI.formatStringList(lore)).build(),
+            setItem(slotMap.get(slot), new ItemBuilder(item).name(ColorAPI.formatString(name)).lore(ColorAPI.formatStringList(lore)).build(),
                     e -> {
                         claims.setClaimBorder(player.getChunk(), particle);
                         SoundAPI.success(player);
                         new ParticlesGUI(plugin, claims, player).open(player);
                     });
         }
+        setItem(45, new ItemBuilder(Material.ARROW).flags(ItemFlag.HIDE_ATTRIBUTES)
+                        .name(ColorAPI.formatString("&c\u02C2\u02C2 Go Back"))
+                        .addLore(ColorAPI.formatString("&7\u279C Click to go back"))
+                        .build(),
+                e -> {
+                    SoundAPI.click((Player) e.getWhoClicked());
+                    new ProfilesGUI(plugin, claims, player).open((Player) e.getWhoClicked());
+                });
+        setItem(49, new ItemBuilder(Material.BARRIER).flags(ItemFlag.HIDE_ATTRIBUTES)
+                        .name(ColorAPI.formatString("&c&lClose"))
+                        .addLore(ColorAPI.formatString("&7\u279C Click to close"))
+                        .build(),
+                e -> {
+                    SoundAPI.fail((Player) e.getWhoClicked());
+                    e.getClickedInventory().close();
+                });
     }
 
     public Color getConfColor(String color) {

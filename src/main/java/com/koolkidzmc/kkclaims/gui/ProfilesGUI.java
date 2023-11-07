@@ -10,13 +10,16 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ProfilesGUI extends FastInv {
     private boolean preventClose = false;
     ClaimManager claims;
     KKClaims plugin;
 
     public ProfilesGUI(KKClaims plugin, ClaimManager claims, Player player) {
-        super(54, ColorAPI.formatString("&d&lKoolKidz &aClaiming > Profiles"));
+        super(54, ColorAPI.formatString("&a&lClaims &7>> &fProfiles"));
         this.plugin = plugin;
         this.claims = claims;
 
@@ -27,6 +30,11 @@ public class ProfilesGUI extends FastInv {
         for (int i = 1; i < 5; i++) {
             setItem(i * 9, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
             setItem(i * 9 + 8, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
+        }
+
+        Map<Integer, Integer> slotMap = new HashMap<>();
+        for (int i = 0; i < 28; i++) {
+            slotMap.put(i, i + 10);
         }
 
         //TODO: for loop to iterate through profiles and show all of the players profiles
