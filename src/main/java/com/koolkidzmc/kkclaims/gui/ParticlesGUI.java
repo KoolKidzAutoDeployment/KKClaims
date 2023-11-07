@@ -5,10 +5,7 @@ import com.koolkidzmc.kkclaims.claims.ClaimManager;
 import com.koolkidzmc.kkclaims.utils.ColorAPI;
 import com.koolkidzmc.kkclaims.utils.FastInv;
 import com.koolkidzmc.kkclaims.utils.ItemBuilder;
-import org.bukkit.Bukkit;
-import org.bukkit.FireworkEffect;
-import org.bukkit.Material;
-import org.bukkit.Particle;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkEffectMeta;
@@ -29,7 +26,8 @@ public class ParticlesGUI extends FastInv {
             ItemStack item = new ItemStack(Material.FIREWORK_STAR, 1);
             ItemMeta im = item.getItemMeta();
             FireworkEffectMeta metaFw = (FireworkEffectMeta) im;
-                FireworkEffect aa = FireworkEffect.builder().withColor(plugin.getConfig().getColor("borders." + particle.name() + ".color")).build();
+                FireworkEffect aa = FireworkEffect.builder()
+                        .withColor(plugin.getConfig().getColor("borders." + particle.name() + ".color")).build();
             metaFw.setEffect(aa);
             item.setItemMeta(metaFw);
             Bukkit.broadcastMessage(particle.name());

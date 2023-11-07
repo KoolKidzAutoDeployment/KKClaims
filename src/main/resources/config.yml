@@ -10,7 +10,7 @@ borders:
   VILLAGER_HAPPY:
     item: FIREWORK_STAR
     # vv For firework stars only! vv
-    color: Color.LIME
+    color: "Color.LIME"
     # ^^ For firework stars only! ^^
     name: "&e&lDefault Border"
     description:
