@@ -48,7 +48,11 @@ public class ProfilesGUI extends FastInv {
         int i = 7;
         for (Object o : claims.getPlayerProfiles(player)) {
             JSONObject profile = (JSONObject) o;
-            setItem(i + 1, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE).name(ColorAPI.formatString("&a&l" + profile.get("name"))).build());
+            setItem(slotMap.get(i) + 1, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE).name(ColorAPI.formatString("&a&l" + profile.get("name"))).build(),
+                    e -> {
+                        SoundAPI.click((Player) e.getWhoClicked());
+                        new ParticlesGUI(plugin, claims, player).open((Player) e.getWhoClicked());
+                    });
             ++i;
         }
 
