@@ -9,6 +9,7 @@ import com.koolkidzmc.kkclaims.utils.SoundAPI;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
+import org.json.simple.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,13 +20,13 @@ public class ProfilesGUI extends FastInv {
     KKClaims plugin;
 
     public ProfilesGUI(KKClaims plugin, ClaimManager claims, Player player) {
-        super(54, ColorAPI.formatString("&a&lClaims &7>> &fProfiles"));
+        super(54, ColorAPI.formatString("&a&lClaims &7>> &8Profiles"));
         this.plugin = plugin;
         this.claims = claims;
 
         for (int i = 0; i < 9; i++) {
             setItem(i, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
-            setItem(i + 45, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
+            setItem(i + 36, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
         }
         for (int i = 1; i < 5; i++) {
             setItem(i * 9, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
@@ -33,11 +34,24 @@ public class ProfilesGUI extends FastInv {
         }
 
         Map<Integer, Integer> slotMap = new HashMap<>();
-        for (int i = 0; i < 28; i++) {
+        for (int i = 0; i < 21; i++) {
             slotMap.put(i, i + 10);
         }
 
+        setItem(8, new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
+        setItem(9, new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
+        setItem(10, new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
+        setItem(11, new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
+        setItem(12, new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
+
         //TODO: for loop to iterate through profiles and show all of the players profiles
+        int i = 7;
+        for (Object o : claims.getPlayerProfiles(player)) {
+            JSONObject profile = (JSONObject) o;
+            setItem(i + 1, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE).name(ColorAPI.formatString("&a&l" + profile.get("name"))).build());
+            ++i;
+        }
+
 
         setItem(45, new ItemBuilder(Material.ARROW).flags(ItemFlag.HIDE_ATTRIBUTES)
                 .name(ColorAPI.formatString("&c\u02C2\u02C2 Go Back"))

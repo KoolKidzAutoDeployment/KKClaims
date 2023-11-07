@@ -24,7 +24,7 @@ public class ClaimGUI extends FastInv {
     KKClaims plugin;
 
     public ClaimGUI(KKClaims plugin, ClaimManager claims, Player player) {
-        super(54, ColorAPI.formatString("&a&lClaims &7>> Claim Land"));
+        super(54, ColorAPI.formatString("&a&lClaims &7>> &8Claim Land"));
         this.plugin = plugin;
         this.claims = claims;
         int index = 0;

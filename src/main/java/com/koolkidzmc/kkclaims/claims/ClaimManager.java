@@ -3,6 +3,7 @@ package com.koolkidzmc.kkclaims.claims;
 import com.koolkidzmc.kkclaims.KKClaims;
 import org.bukkit.Chunk;
 import org.bukkit.Particle;
+import org.bukkit.entity.Player;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -69,9 +70,11 @@ public class ClaimManager {
         }
         return false;
     }
-    public void createGlobalProfile(UUID player) {
-        String profileKey = player + ".global";
+
+    public void createProfile(String profileName, UUID player) {
+        String profileKey = player + "." + profileName;
         JSONObject profileObject = new JSONObject();
+        profileObject.put("name", profileName);
         profileObject.put("border", Particle.VILLAGER_HAPPY.toString());
         profileObject.put("pvp", false);
         JSONObject groupsObject = new JSONObject();
@@ -341,6 +344,30 @@ public class ClaimManager {
         String z = String.valueOf(chunk.getZ());
 
         return "("+x+","+z+")";
+    }
+
+    public JSONArray getPlayerProfiles(Player player) {
+        char[] array = new char[100];
+        try {
+            FileReader file = new FileReader("./plugins/KKClaims/profiles.json");
+            file.read(array);
+            if (array[0] == '\0') return null;
+            JSONArray a = (JSONArray) new JSONParser().parse(new FileReader("./plugins/KKClaims/profiles.json"));
+            JSONArray profileArray = new JSONArray();
+            for (Object o : a) {
+                JSONObject profiles = (JSONObject) o;
+
+                for (String key : (Iterable<String>) profiles.keySet()) {
+                    if (key.contains(player.getUniqueId().toString())) {
+                        profileArray.add(profiles.get(key));
+                    }
+                }
+            }
+            return profileArray;
+        } catch (ParseException | IOException e) {
+            console.warning("Error while reading claim data: " + Arrays.toString(e.getStackTrace()));
+        }
+        return null;
     }
 
     public void removeClaim(Chunk chunk) {

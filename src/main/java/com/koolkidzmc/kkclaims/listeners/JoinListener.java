@@ -17,6 +17,6 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         if (claims.playerHasProfiles(event.getPlayer().getUniqueId())) return;
-        claims.createGlobalProfile(event.getPlayer().getUniqueId());
+        claims.createProfile("global", event.getPlayer().getUniqueId());
     }
 }

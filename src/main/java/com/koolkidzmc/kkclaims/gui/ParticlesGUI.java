@@ -25,21 +25,21 @@ public class ParticlesGUI extends FastInv {
     ClaimManager claims;
     KKClaims plugin;
     public ParticlesGUI(KKClaims plugin, ClaimManager claims, Player player) {
-        super(54, ColorAPI.formatString("&a&lClaims &7>> &fProfile Border"));
+        super(54, ColorAPI.formatString("&a&lClaims &7>> &8Profile Border"));
         this.plugin = plugin;
         this.claims = claims;
 
 
         for (int i = 0; i < 9; i++) {
             setItem(i, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
-            setItem(i + 45, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
+            setItem(i + 36, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
         }
         for (int i = 1; i < 5; i++) {
             setItem(i * 9, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
             setItem(i * 9 + 8, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(" ").lore(ColorAPI.formatString("&8www.koolkidzmc.com")).build());
         }
         Map<Integer, Integer> slotMap = new HashMap<>();
-        for (int i = 0; i < 28; i++) {
+        for (int i = 0; i < 21; i++) {
             slotMap.put(i, i + 10);
         }
 
