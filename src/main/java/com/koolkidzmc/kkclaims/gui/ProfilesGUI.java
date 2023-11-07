@@ -38,11 +38,11 @@ public class ProfilesGUI extends FastInv {
             slotMap.put(i, i + 10);
         }
 
-        setItem(8, new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
-        setItem(9, new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
-        setItem(10, new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
-        setItem(11, new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
-        setItem(12, new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
+        setItem(slotMap.get(8), new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
+        setItem(slotMap.get(9), new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
+        setItem(slotMap.get(10), new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
+        setItem(slotMap.get(11), new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
+        setItem(slotMap.get(12), new ItemBuilder(Material.RED_STAINED_GLASS_PANE).name(ColorAPI.formatString("&c&lEmpty Profile")).build());
 
         //TODO: for loop to iterate through profiles and show all of the players profiles
         int i = 7;
