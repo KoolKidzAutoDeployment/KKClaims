@@ -35,14 +35,16 @@ public final class KKClaims extends JavaPlugin {
         saveDefaultConfig();
         reloadConfig();
         console.info("config.yml loaded!");
-        console.info("Pausing File Check!");
+        console.info("Pausing File Loader!");
         console.info("Checking Licence Key...");
         String key = config.get("licence-key").toString();
         if (key == null || key.isEmpty()) {
             console.warning("*** No Licence Key Found in config.yml! ***");
             console.warning("-*-* Plugin Will Now Disable! *-*-");
+            this.getPluginLoader().disablePlugin(this);
         }
         checkLicenceKey(key);
+        console.info("Resuming File Loader");
         try {
             File f = new File("./plugins/KKClaims/claims.json");
             if (!f.exists()) {
