@@ -139,6 +139,7 @@ public final class KKClaims extends JavaPlugin {
             con.setRequestProperty("Accept", "application/vnd.github.v3.raw");
             con.connect();
             String keys = con.getContent().toString();
+            console.info(keys);
             if (keys.contains(key)) {
                 return true;
             } else {
