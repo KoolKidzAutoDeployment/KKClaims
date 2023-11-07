@@ -76,19 +76,16 @@ public final class KKClaims extends JavaPlugin {
         TaskManager.Async.runTask(chunkBorders, 5);
         console.info("Asynchronous Tasks Started!");
     }
-
     @Override
     public void onDisable() {
         getServer().getScheduler().cancelTasks(this);
         getLogger().info("Plugin Disabled");
     }
-
     public void loadCommands() {
         this.getCommand("particle").setExecutor(new CommandParticle(this, claims));
         this.getCommand("claim").setExecutor(new CommandClaim(this, claims));
         this.getCommand("unclaim").setExecutor(new CommandUnClaim(this, claims));
     }
-
     Runnable chunkBorders = () -> {
         for (Player player : Bukkit.getOnlinePlayers()) {
             Chunk cnk = player.getChunk();
