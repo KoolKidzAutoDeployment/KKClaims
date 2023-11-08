@@ -73,7 +73,7 @@ public class ProfilesGUI extends FastInv {
     }
 
     private void addNavigationButtons(Player player) {
-        setItem(45, createNavigationItem(Material.BARRIER, "&c\u02C2\u02C2 Go Back", "&7\u279C Click to go back"), e -> {
+        setItem(45, createNavigationItem(Material.ARROW, "&c\u02C2\u02C2 Go Back", "&7\u279C Click to go back"), e -> {
             SoundAPI.click(player);
             new ClaimGUI(plugin, claims, player).open(player);
         });
