@@ -2,11 +2,9 @@ package com.koolkidzmc.kkclaims.commands;
 
 import com.koolkidzmc.kkclaims.KKClaims;
 import com.koolkidzmc.kkclaims.claims.ClaimManager;
-import com.koolkidzmc.kkclaims.gui.ClaimGUI;
-import com.koolkidzmc.kkclaims.gui.ProfilesGUI;
-import com.koolkidzmc.kkclaims.utils.FastInv;
+import com.koolkidzmc.kkclaims.gui.claim.ClaimGUI;
+import com.koolkidzmc.kkclaims.gui.claim.ClaimSettingsGUI;
 import com.koolkidzmc.kkclaims.utils.SoundAPI;
-import org.bukkit.Particle;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -38,7 +36,7 @@ public class CommandClaim implements CommandExecutor, TabCompleter {
                 return true;
             } if (args[0].equalsIgnoreCase("profiles")) {
                 SoundAPI.success(player);
-                new ProfilesGUI(plugin, claims, player).open(player);
+                new ClaimSettingsGUI(plugin, claims, player).open(player);
                 return true;
             }
         }

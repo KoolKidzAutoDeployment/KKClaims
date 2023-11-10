@@ -2,7 +2,7 @@ package com.koolkidzmc.kkclaims.commands;
 
 import com.koolkidzmc.kkclaims.KKClaims;
 import com.koolkidzmc.kkclaims.claims.ClaimManager;
-import com.koolkidzmc.kkclaims.gui.ParticlesGUI;
+import com.koolkidzmc.kkclaims.gui.profile.ParticlesGUI;
 import com.koolkidzmc.kkclaims.utils.SoundAPI;
 import org.bukkit.Chunk;
 import org.bukkit.Particle;

@@ -1,7 +1,8 @@
-package com.koolkidzmc.kkclaims.gui;
+package com.koolkidzmc.kkclaims.gui.profile;
 
 import com.koolkidzmc.kkclaims.KKClaims;
 import com.koolkidzmc.kkclaims.claims.ClaimManager;
+import com.koolkidzmc.kkclaims.gui.claim.ClaimGUI;
 import com.koolkidzmc.kkclaims.utils.ColorAPI;
 import com.koolkidzmc.kkclaims.utils.FastInv;
 import com.koolkidzmc.kkclaims.utils.ItemBuilder;

@@ -1,7 +1,8 @@
-package com.koolkidzmc.kkclaims.gui;
+package com.koolkidzmc.kkclaims.gui.profile;
 
 import com.koolkidzmc.kkclaims.KKClaims;
 import com.koolkidzmc.kkclaims.claims.ClaimManager;
+import com.koolkidzmc.kkclaims.gui.claim.ClaimSettingsGUI;
 import com.koolkidzmc.kkclaims.utils.ColorAPI;
 import com.koolkidzmc.kkclaims.utils.FastInv;
 import com.koolkidzmc.kkclaims.utils.ItemBuilder;
@@ -77,7 +78,7 @@ public class ParticlesGUI extends FastInv {
                         .build(),
                 e -> {
                     SoundAPI.click((Player) e.getWhoClicked());
-                    new ProfilesGUI(plugin, claims, player).open((Player) e.getWhoClicked());
+                    new ClaimSettingsGUI(plugin, claims, player).open((Player) e.getWhoClicked());
                 });
         setItem(49, new ItemBuilder(Material.BARRIER).flags(ItemFlag.HIDE_ATTRIBUTES)
                         .name(ColorAPI.formatString("&c&lClose"))

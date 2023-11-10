@@ -1,4 +1,4 @@
-package com.koolkidzmc.kkclaims.gui;
+package com.koolkidzmc.kkclaims.gui.claim;
 
 import com.koolkidzmc.kkclaims.KKClaims;
 import com.koolkidzmc.kkclaims.claims.ClaimManager;
@@ -73,7 +73,7 @@ public class ClaimGUI extends FastInv {
                 .build(),
                 e -> {
                     SoundAPI.click((Player) e.getWhoClicked());
-                    new ProfilesGUI(plugin, claims, player).open((Player) e.getWhoClicked());
+                    new ClaimSettingsGUI(plugin, claims, player).open((Player) e.getWhoClicked());
                 });
 
     }
