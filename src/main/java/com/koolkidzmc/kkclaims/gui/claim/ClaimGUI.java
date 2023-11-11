@@ -22,7 +22,6 @@ public class ClaimGUI extends FastInv {
     private boolean preventClose = false;
     ClaimManager claims;
     KKClaims plugin;
-
     public ClaimGUI(KKClaims plugin, ClaimManager claims, Player player) {
         super(54, ColorAPI.formatString("&a&lClaims &7>> &8Claim Land"));
         this.plugin = plugin;
