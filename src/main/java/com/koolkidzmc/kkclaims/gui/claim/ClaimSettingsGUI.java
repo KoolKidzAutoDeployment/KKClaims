@@ -37,9 +37,9 @@ public class ClaimSettingsGUI extends FastInv {
     private void fillBackground() {
         for (int i = 0; i < 9; i++) {
             setItem(i, createBackgroundItem().build());
-            setItem(i + 45, createBackgroundItem().build());
+            setItem(i + 36, createBackgroundItem().build());
         }
-        for (int i = 1; i < 6; i++) {
+        for (int i = 1; i < 5; i++) {
             setItem(i * 9, createBackgroundItem().build());
             setItem(i * 9 + 8, createBackgroundItem().build());
         }
