@@ -103,27 +103,6 @@ public final class KKClaims extends JavaPlugin {
                     showBorder(neighbor, claims.getClaimBorder(neighbor), player);
                 }
             }
-            /*
-            Chunk cnk = player.getChunk();
-            Chunk cnk1 = player.getWorld().getChunkAt(cnk.getX() + 1, cnk.getZ());
-            Chunk cnk2 = player.getWorld().getChunkAt(cnk.getX(), cnk.getZ() + 1);
-            Chunk cnk3 = player.getWorld().getChunkAt(cnk.getX() - 1, cnk.getZ());
-            Chunk cnk4 = player.getWorld().getChunkAt(cnk.getX(), cnk.getZ() - 1);
-            Chunk cnk5 = player.getWorld().getChunkAt(cnk.getX() + 1, cnk.getZ() + 1);
-            Chunk cnk6 = player.getWorld().getChunkAt(cnk.getX() + 1, cnk.getZ() - 1);
-            Chunk cnk7 = player.getWorld().getChunkAt(cnk.getX() - 1, cnk.getZ() + 1);
-            Chunk cnk8 = player.getWorld().getChunkAt(cnk.getX() - 1, cnk.getZ() - 1);
-            showBorder(cnk, claims.getClaimBorder(cnk), player);
-            showBorder(cnk1, claims.getClaimBorder(cnk1), player);
-            showBorder(cnk2, claims.getClaimBorder(cnk2), player);
-            showBorder(cnk3, claims.getClaimBorder(cnk3), player);
-            showBorder(cnk4, claims.getClaimBorder(cnk4), player);
-            showBorder(cnk5, claims.getClaimBorder(cnk5), player);
-            showBorder(cnk6, claims.getClaimBorder(cnk6), player);
-            showBorder(cnk7, claims.getClaimBorder(cnk7), player);
-            showBorder(cnk8, claims.getClaimBorder(cnk8), player);
-
-             */
         }
     };
 
